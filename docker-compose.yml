@@ -27,18 +27,18 @@ services:
      - "30104:30104"
     env_file:
       - ./dump1090fa/dump1090fa.conf
-  piaware:
-    image: "filipjonckers/raspbian-flightaware"
-    build: ./flightaware
-    container_name: piaware
-    restart: always
-    depends_on:
-      - dump1090fa
-    volumes:
-      - ./flightaware/piaware.conf:/etc/piaware.conf
-    ports:
-      - "30105:30105"
-      - "30106:30106"
+#  piaware:
+#    image: "filipjonckers/raspbian-flightaware"
+#    build: ./flightaware
+#    container_name: piaware
+#    restart: always
+#    depends_on:
+#      - dump1090fa
+#    volumes:
+#      - ./flightaware/piaware.conf:/etc/piaware.conf
+#    ports:
+#      - "30105:30105"
+#      - "30106:30106"
   fr24:
     image: "filipjonckers/raspbian-flightradar24"
     build: ./fr24
@@ -48,31 +48,31 @@ services:
       - dump1090fa
     ports:
      - "8754:8754"
-  adsbexchange:
-    image: "filipjonckers/raspbian-adsbexchange"
-    build: ./adsbexchange
-    container_name: adsbexchange
-    restart: always
-    depends_on:
-      -  dump1090fa
-    environment:
-      - CUSTOM_PORT=51051
-  adsbhub:
-    image: "filipjonckers/raspbian-adsbhub"
-    build: ./adsbhub
-    container_name: adsbhub
-    restart: always
-    depends_on:
-      -  dump1090fa
+ # adsbexchange:
+ #   image: "filipjonckers/raspbian-adsbexchange"
+ #   build: ./adsbexchange
+ #   container_name: adsbexchange
+ #   restart: always
+ #   depends_on:
+ #     -  dump1090fa
+ #   environment:
+ #     - CUSTOM_PORT=51051
+ # adsbhub:
+ #   image: "filipjonckers/raspbian-adsbhub"
+ #   build: ./adsbhub
+ #   container_name: adsbhub
+ #   restart: always
+ #   depends_on:
+ #     -  dump1090fa
 
-  opensky:
-    image: "filipjonckers/raspbian-opensky"
-    build: ./opensky
-    container_name: opensky
-    restart: "no"
-    depends_on:
-      - dump1090fa
-    volumes:
-      - ./opensky/10-debconf.conf:/var/lib/openskyd/conf.d/10-debconf.conf
+ # opensky:
+ #   image: "filipjonckers/raspbian-opensky"
+ #   build: ./opensky
+ #   container_name: opensky
+ #   restart: "no"
+ #   depends_on:
+ #     - dump1090fa
+ #   volumes:
+ #     - ./opensky/10-debconf.conf:/var/lib/openskyd/conf.d/10-debconf.conf
  
  
