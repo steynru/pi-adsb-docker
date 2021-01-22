@@ -133,8 +133,28 @@ Connect again to your Raspberry Pi using SSH:
     ```
     $ ssh pi@raspberrypi.local
     ```
+# Update Python
 
-
+1. Install Python 
+    ...
+    $ sudo apt install python3.5
+    ...
+    
+2. Update Alternatives
+    ...
+    $ sudo update-alternatives --install /usr/bin/python python /usr/bin/python3.5 1
+    $ sudo update-alternatives --install /usr/bin/python python /usr/bin/python3.6 2
+    ...
+3. Set Default
+    ...
+    $ sudo update-alternatives  --set python /usr/bin/python3.5
+    ...
+    
+4. Check version
+    ...
+    $ python --version
+    ...
+    
 # Install Docker
 
 1. install Docker on your raspberry pi:
